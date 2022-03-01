@@ -1,5 +1,3 @@
-from cgitb import text
-from email import message
 import requests
 import telebot
 from telebot import types
@@ -32,10 +30,7 @@ def milk():
 
 @bot.message_handler(commands=['start'])
 def send_message(message):
-    if (message.text == '/fat'):
-        bot.send_message(chat_id = message.chat.id, text="A small amount of fat is an essential part of a healthy, balanced diet. Fat is a source of essential fatty acids, which the body cannot make itself. Fat helps the body absorb vitamin A, vitamin D and vitamin E. These vitamins are fat-soluble, which means they can only be absorbed with the help of fats.", reply_markup=fat(), parse_mode="HTML")
-    if (message.text == '/milk'):
-        bot.send_message(chat_id = message.chat.id, text="Select one", reply_markup=milk(), parse_mode="HTML")
+    bot.send_message(chat_id = message.chat.id, text="Howdy, how are you doing?")
 
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
