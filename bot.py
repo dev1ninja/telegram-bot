@@ -4,7 +4,6 @@ from telebot import types
 import json
 
 token = '5150601694:AAGd1pwlMAZxCCLMR9H5QcP-kjIRy-KUESI'
-# chat_id = '-1001677064857'
 
 bot = telebot.TeleBot(token)
 
@@ -32,15 +31,6 @@ def milk():
 
     return markup
 
-# beef code
-def beef():
-    list_of_result = {'Question1':'Can I drink milk?', 'Question2':'Facts about milk!'}
-    markup = types.InlineKeyboardMarkup()
-    for key, value in list_of_result.items():
-        markup.add(types.InlineKeyboardButton(text=value, callback_data=key))
-
-    return markup
-
 @bot.message_handler(commands=['start'])
 def send_message(message):
     bot.send_message(chat_id = message.chat.id, text="Howdy, how are you doing?")
@@ -52,8 +42,8 @@ def echo_all(message):
         bot.send_message(chat_id = message.chat.id, text="Select one", reply_markup=milk(), parse_mode="HTML")
     if ('fat' in message.text.lower()): # in case message contains a word "fat"
         bot.send_message(chat_id = message.chat.id, text="A small amount of fat is an essential part of a healthy, balanced diet. Fat is a source of essential fatty acids, which the body cannot make itself. Fat helps the body absorb vitamin A, vitamin D and vitamin E. These vitamins are fat-soluble, which means they can only be absorbed with the help of fats.", reply_markup=fat(), parse_mode="HTML")
-    if ('beef' in message.text.lower()): # in case message contains a word "beef"
-        bot.send_message(chat_id = message.chat.id, text="Beef is good for you")
+    if ('ham' in message.text.lower()): # in case message contains a word "ham"
+        bot.send_message(chat_id = message.chat.id, text="ham is good for you")
 
 # handling call back function
 @bot.callback_query_handler(func=lambda call: True)
