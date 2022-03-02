@@ -47,11 +47,11 @@ def send_message(message):
 # receiving msg function
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
-    if ('milk' in message.text): # in case message contains a word "milk"
+    if ('milk' in message.text.lower()): # in case message contains a word "milk"
         bot.send_message(chat_id = message.chat.id, text="Select one", reply_markup=milk(), parse_mode="HTML")
-    if ('fat' in message.text): # in case message contains a word "fat"
+    if ('fat' in message.text.lower()): # in case message contains a word "fat"
         bot.send_message(chat_id = message.chat.id, text="A small amount of fat is an essential part of a healthy, balanced diet. Fat is a source of essential fatty acids, which the body cannot make itself. Fat helps the body absorb vitamin A, vitamin D and vitamin E. These vitamins are fat-soluble, which means they can only be absorbed with the help of fats.", reply_markup=fat(), parse_mode="HTML")
-    if ('beef' in message.text): # in case message contains a word "beef"
+    if ('beef' in message.text.lower()): # in case message contains a word "beef"
         bot.send_message(chat_id = message.chat.id, text="Beef is good for you")
 
 # handling call back function
