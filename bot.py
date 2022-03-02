@@ -1,9 +1,10 @@
 import requests
 import telebot
 from telebot import types
+import json
 
 token = '5150601694:AAGd1pwlMAZxCCLMR9H5QcP-kjIRy-KUESI'
-chat_id = '-1001677064857'
+# chat_id = '-1001677064857'
 
 bot = telebot.TeleBot(token)
 
@@ -57,6 +58,7 @@ def echo_all(message):
 # handling call back function
 @bot.callback_query_handler(func=lambda call: True)
 def handle_query(call):
+    print(call.message.chat.id)
     if (call.data == 'Right'): # when user click button "I got the info"
         bot.answer_callback_query(callback_query_id=call.id, show_alert=True, text="Thank you!")
     if (call.data == 'Wrong'): # when user click button "This is not what I am looking for"
@@ -64,7 +66,7 @@ def handle_query(call):
     if (call.data == 'Question1'): # when user click button "Can I drink milk"
         bot.answer_callback_query(callback_query_id=call.id, show_alert=True, text="Yes")
     if (call.data == 'Question2'): # when user click button "Facts about milk!"
-        bot.send_message(chat_id = chat_id, text="Is drinking milk good for you?\nImage result for milk\nIt's packed with important nutrients like calcium, phosphorus, B vitamins, potassium and vitamin D. Plus, it's an excellent source of protein. Drinking milk and dairy products may prevent osteoporosis and bone fractures and even help you maintain a healthy weight.", parse_mode="HTML")
+        bot.send_message(chat_id = call.message.chat.id, text="Is drinking milk good for you?\nImage result for milk\nIt's packed with important nutrients like calcium, phosphorus, B vitamins, potassium and vitamin D. Plus, it's an excellent source of protein. Drinking milk and dairy products may prevent osteoporosis and bone fractures and even help you maintain a healthy weight.", parse_mode="HTML")
 
 delete_webhook()
 
